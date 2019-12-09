@@ -28,16 +28,16 @@ public struct ParagraphStyleCollection {
 
     public init() {
         let headingStyle = NSMutableParagraphStyle()
-        headingStyle.paragraphSpacing = 8
+        headingStyle.paragraphSpacing = 6
 
         let bodyStyle = NSMutableParagraphStyle()
-        bodyStyle.paragraphSpacingBefore = 8
-        bodyStyle.paragraphSpacing = 8
-        bodyStyle.lineSpacing = 8
+        bodyStyle.paragraphSpacingBefore = 6
+        bodyStyle.paragraphSpacing = 6
+        bodyStyle.lineSpacing = 0
 
         let codeStyle = NSMutableParagraphStyle()
-        codeStyle.paragraphSpacingBefore = 8
-        codeStyle.paragraphSpacing = 8
+        codeStyle.paragraphSpacingBefore = 6
+        codeStyle.paragraphSpacing = 6
 
         heading1 = headingStyle
         heading2 = headingStyle

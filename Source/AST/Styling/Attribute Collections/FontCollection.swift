@@ -21,7 +21,7 @@ public typealias DownFont = NSFont
 #endif
 
 public protocol FontCollection {
-
+    
     var heading1: DownFont { get }
     var heading2: DownFont { get }
     var heading3: DownFont { get }
@@ -31,14 +31,14 @@ public protocol FontCollection {
 }
 
 public struct StaticFontCollection: FontCollection {
-
+    
     public var heading1: DownFont
     public var heading2: DownFont
     public var heading3: DownFont
     public var body: DownFont
     public var code: DownFont
     public var listItemPrefix: DownFont
-
+    
     public init(
         heading1: DownFont = .boldSystemFont(ofSize: 28),
         heading2: DownFont = .boldSystemFont(ofSize: 24),
@@ -47,12 +47,29 @@ public struct StaticFontCollection: FontCollection {
         code: DownFont = DownFont(name: "menlo", size: 17) ?? .systemFont(ofSize: 17),
         listItemPrefix: DownFont = DownFont.monospacedDigitSystemFont(ofSize: 17, weight: .regular)
     ) {
-        self.heading1 = heading1
-        self.heading2 = heading2
-        self.heading3 = heading3
-        self.body = body
-        self.code = code
-        self.listItemPrefix = listItemPrefix
+        if #available(iOS 12.0, *) {
+            let body = UIFont.preferredFont(forTextStyle: .body)
+            let mono = UIFont.monospacedSystemFont(ofSize: body.pointSize, weight: .regular)
+            let heading1 = UIFont.preferredFont(forTextStyle: .title1)
+            let heading2 = UIFont.preferredFont(forTextStyle: .title2)
+            let heading3 = UIFont.preferredFont(forTextStyle: .title3)
+            let listItemPrefix = body
+            
+            self.heading1 = heading1
+            self.heading2 = heading2
+            self.heading3 = heading3
+            self.body = body
+            self.code = mono
+            self.listItemPrefix = listItemPrefix
+        }
+        else {
+            self.heading1 = heading1
+            self.heading2 = heading2
+            self.heading3 = heading3
+            self.body = body
+            self.code = code
+            self.listItemPrefix = listItemPrefix
+        }
     }
 }
 

@@ -19,11 +19,10 @@ import AppKit
 #endif
 
 public struct ListItemOptions {
-
     public var maxPrefixDigits: UInt = 2
-    public var spacingAfterPrefix: CGFloat = 8
-    public var spacingAbove: CGFloat = 4
-    public var spacingBelow: CGFloat = 8
+    public var spacingAfterPrefix: CGFloat = 4
+    public var spacingAbove: CGFloat = 2
+    public var spacingBelow: CGFloat = 2
 }
 
 #endif
